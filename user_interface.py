@@ -184,9 +184,7 @@ class UI:
             target_height = self.preview_section.winfo_height()
             target_width = (target_height * image_width) / image_height
 
-        print("Original size:", self.image.size)
         resized_image = self.image.resize((int(target_width), int(target_height)), Image.Resampling.LANCZOS)
-        print("Resized size:", resized_image.size)
 
         image_tk = ImageTk.PhotoImage(resized_image)
         self.image_preview = image_tk
