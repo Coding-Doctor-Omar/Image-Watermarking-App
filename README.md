@@ -9,6 +9,8 @@
 
 The file 'requirements.txt' contains the needed package(s) that you should install to be able to use the app.
 
+Now, all you have to do is run main.pyw
+
 
 # App Screenshot:
 ![Screenshot](data/images/mark-it-screenshot.jpg)
