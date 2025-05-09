@@ -52,5 +52,5 @@ class ImageProcessor:
 
         self.processed_img = Image.alpha_composite(original_image, watermark_layer)
 
-    def save_final_image(self, save_path):
-        self.processed_img.convert("RGB").save(save_path)
+    def save_final_image(self, path):
+        self.processed_img.convert("RGB").save(path)

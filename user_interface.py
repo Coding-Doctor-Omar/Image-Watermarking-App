@@ -231,8 +231,13 @@ class UI:
 
     def save_image(self):
         save_path = filedialog.asksaveasfilename(title="Save Image As", defaultextension=".jpg", filetypes=[("Image File", "*.jpg")])
-        processor = ImageProcessor(image=self.processed_image)
-        processor.save_final_image(save_path=save_path)
+
+        if self.processed_image:
+            processor = ImageProcessor(image=self.processed_image)
+        else:
+            processor = ImageProcessor(image=self.image)
+
+        processor.save_final_image(path=save_path)
 
     def rotation_update(self, rotation):
         self.rotation = rotation
