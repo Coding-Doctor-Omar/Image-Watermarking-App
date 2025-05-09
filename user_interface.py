@@ -1,5 +1,5 @@
 import tkinter.ttk as ttk
-from tkinter import Tk, PhotoImage, Canvas, Label, Entry, Button, Scale, colorchooser, filedialog, StringVar
+from tkinter import Tk, PhotoImage, Canvas, Label, Entry, Button, Scale, colorchooser, filedialog, StringVar, messagebox
 from PIL import Image, ImageTk
 from image_processor import ImageProcessor
 
@@ -230,14 +230,19 @@ class UI:
             self.preview_section.create_image(250, 250, image=self.image_preview, anchor="center")
 
     def save_image(self):
-        save_path = filedialog.asksaveasfilename(title="Save Image As", defaultextension=".jpg", filetypes=[("Image File", "*.jpg")])
+        if self.image:
+            save_path = filedialog.asksaveasfilename(title="Save Image As", defaultextension=".jpg", filetypes=[("Image File", "*.jpg")])
 
-        if self.processed_image:
-            processor = ImageProcessor(image=self.processed_image)
+            if self.processed_image:
+                processor = ImageProcessor(image=self.processed_image)
+            else:
+                processor = ImageProcessor(image=self.image)
+
+            processor.save_final_image(path=save_path)
+            messagebox.showinfo(title="Save Complete", message="Image Saved Successfully!")
         else:
-            processor = ImageProcessor(image=self.image)
+            messagebox.showinfo(title="Error", message="No Image To Save.")
 
-        processor.save_final_image(path=save_path)
 
     def rotation_update(self, rotation):
         self.rotation = rotation
