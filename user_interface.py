@@ -157,6 +157,9 @@ class UI:
                             relief="groove", command=self.save_image)
         self.save_image.grid(row=9, column=1)
 
+        self.window.update_idletasks()
+        self.window.maxsize(self.window.winfo_width(), self.window.winfo_height())
+
 
         self.window.mainloop()
 
